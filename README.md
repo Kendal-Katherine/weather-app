@@ -82,6 +82,18 @@ Vento: 12.5 km/h
 
 ---
 
+## 🔐 Security and Ethics
+
+This project uses a public API (Open-Meteo) and does not handle sensitive user data.
+
+Good practices applied:
+- No storage of personal data
+- Safe handling of API responses
+- Error handling to prevent application crashes
+
+This project was developed with the support of AI tools, used responsibly to assist learning and improve code quality.
+
+
 ## 👩‍💻 Autora
 
 Kendal Katherine

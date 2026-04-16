@@ -1,14 +1,24 @@
-
-import { getWeather } from "./services/weatherService";
+import readline from "readline";
+import { getWeatherByCity } from "./services/weatherService";
 import { showWeather } from "./ui/display";
 
-async function main() {
-  // Exemplo: São Paulo
-  const lat = -23.55;
-  const lon = -46.63;
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
 
-  const weather = await getWeather(lat, lon);
-  showWeather(weather);
-}
+rl.question("Digite uma ou mais cidades (separadas por vírgula): ", async (input) => {
+  const cities = input.split(",").map(city => city.trim());
 
-main();
+  for (const city of cities) {
+    try {
+      const weather = await getWeatherByCity(city);
+      showWeather(weather);
+      console.log("---------------");
+    } catch (error) {
+      console.log(`❌ Erro para "${city}":`, (error as Error).message);
+    }
+  }
+
+  rl.close();
+});
